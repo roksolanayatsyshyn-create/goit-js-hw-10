@@ -6,16 +6,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 
-    const options={
-      enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    // console.log(selectedDates[0]);
-  },};
-  flatpickr("#datetime-picker",options) 
-  
+
     
 
 // refs
@@ -56,11 +47,13 @@ flatpickr("#datetime-picker", {
 refs.buttonTimer.disabled = true;
 function showTimer() {
   refs.buttonTimer.disabled = true;
+  refs.calendar.disabled=true;
   
   const intervalId = setInterval(() => {
     const ms = userSelectedDate - new Date();
     if (ms <= 0) {
       clearInterval(intervalId);
+      refs.calendar.disabled=false;
 
      return
     }
